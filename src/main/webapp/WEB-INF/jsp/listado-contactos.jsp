@@ -20,29 +20,34 @@
 <body>
 		
 		<h1>Listado de Contactos</h1>
+	<div class="container">
+		<table border="5" class="table table-striped table-hover">
+			<thead class="thead-light">
+				<tr>
+					<th>ID Contacto</th>
+					<th>Nombre Proveedor</th>
+					<th>Direccion</th>
+					<th>Comuna</th>
+					<th colspan="2" tex-align="center">Acciones</th>
+				</tr>
+			 </thead>
+			<c:forEach items="${contactosLista}" var="contacto">	
+				<tr>
+					<td><c:out value="${contacto.getId()}" /></td>
+					<td><c:out value="${contacto.getNombreproveedor()}" /></td>
+					<td><c:out value="${contacto.getDireccion()}" /></td>
+					<td><c:out value="${contacto.getComuna()}" /></td>
+					<td>
+					 <a class="btn btn-secondary" data-role="button" href="editarContacto/<c:out value="${contacto.getId()}" />">Editar</a> &nbsp;		
+					</td>
+					<td>
+					 <a class="btn btn-secondary" data-role="button" href="nuevoContacto">Ingresar</a> &nbsp;		
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
 	
-	<table>
-		<tr>
-			<th>ID Contacto</th>
-			<th>Nombre Proveedor</th>
-			<th>Direccion</th>
-			<th>Comuna</th>
-		</tr>
-		<c:forEach items="${contactosLista}" var="contacto">	
-		<tr>
-			<td><c:out value="${contacto.getId()}" /></td>
-			<td><c:out value="${contacto.getNombreproveedor()}" /></td>
-			<td><c:out value="${contacto.getDireccion()}" /></td>
-			<td><c:out value="${contacto.getComuna()}" /></td>
-			<td>
-			<a href="editarContacto/<c:out value="${contacto.getId()}" />">Editar</a> &nbsp;		
-			</td>
-			<td>
-			<a href="nuevoContacto">Ingresar</a> &nbsp;		
-			</td>
-		</tr>
-		</c:forEach>
-	</table>
+	</div>
 		<br>
 		<a href="${pageContext.request.contextPath}">Volver a la página principal</a>
 		
